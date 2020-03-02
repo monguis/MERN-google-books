@@ -16,5 +16,3 @@ module.exports = Book;
 
 
 // stellar-aleph-269901
-
-// AIzaSyCGCyWyQ285EZ0W9qTBIdnRbJhNSQZ7EzQ
