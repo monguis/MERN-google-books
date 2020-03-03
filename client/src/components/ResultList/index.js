@@ -11,31 +11,30 @@ export function ResultList({ children }) {
   );
 }
 
-export function ResultListItem({ children }) {
-  return (<li className="list-group-item">{children}
+export function ResultListItem(props) {
+  return (<li className="list-group-item">{props.children}
     <div className="card">
       <div className="card-body">
         <div className="container p-0">
           <div className="row">
             <blockquote className="blockquote mb-0">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                posuere erat a ante.
+                {props.values.volumeInfo.title}
           </p>
               <footer className="blockquote-footer">
                 Author<cite title="Source Title">Source Title</cite>
               </footer>
               <footer className="blockquote-footer">
-                Author<cite title="Source Title">Source Title</cite>
+                Author<cite title="Source Title"> {props.values.volumeInfo.authors.join(", ")}</cite>
               </footer>
             </blockquote>
           </div>
           <div className="row">
             <div className="col-4">
-              <img className="img-fluid pt-1" src="https://picsum.photos/500" alt />
+              <img className="img-fluid pt-1" src={props.values.volumeInfo.imageLinks ? props.values.volumeInfo.imageLinks.thumbnail :"https://picsum.photos/500"  } alt />
             </div>
             <div className="col-8">
-              <p className="pt-0"></p>
+              <p className="pt-0">{props.values.volumeInfo.description}</p>
             </div>
           </div>
         </div>
