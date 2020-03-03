@@ -5,6 +5,7 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
+import {ResultList,ResultListItem} from "../components/ResultList"
 import { Input, TextArea, FormBtn } from "../components/Form";
 
 function Books() {
@@ -88,6 +89,22 @@ function Books() {
               Search
               </FormBtn>
           </form>
+          {books.length ? (
+            <ResultList>
+              {books.map(book => (
+                <ResultListItem key={book._id}>
+                  <Link to={"/books/" + book._id}>
+                    <strong>
+                      {book.title} by {book.author}
+                    </strong>
+                  </Link>
+                  <DeleteBtn onClick={() => deleteBook(book._id)} />
+                </ResultListItem>
+              ))}
+            </ResultList>
+          ) : (
+              <h3>No Results to Display</h3>
+            )}
         </Col>
         <Col size="md-6 sm-12">
           <Jumbotron>
