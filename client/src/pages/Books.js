@@ -31,7 +31,7 @@ function Books() {
     API.googlebooksget(formObject).then(res => {
       setResponse(res.data.items);
     })
-      .catch(err => console.log(err));
+      .catch(err =>  console.log( error.response.request._response ));
   };
 
   // Deletes a book from the database with a given id, then reloads books from the db
@@ -60,8 +60,6 @@ function Books() {
 
   const googleBookAdd = (e) => {
     const index = e.target.getAttribute("index")
-    console.log(index)
-    console.log(apiResponse[index]);
     API.saveBook({
       title: apiResponse[index].volumeInfo.title,
       author: apiResponse[index].volumeInfo.authors.join(", "),
