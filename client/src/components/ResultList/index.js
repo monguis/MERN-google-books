@@ -16,24 +16,30 @@ export function ResultListItem(props) {
     <div className="card">
       <div className="card-body">
         <div className="container p-0">
-          <div className="row">
+          <div className="row" style={{position:"relative"}}>
             <blockquote className="blockquote mb-0">
               <p>
                 {props.values.volumeInfo.title}
-          </p>
-              <footer className="blockquote-footer">
-                Author<cite title="Source Title">Source Title</cite>
-              </footer>
+              </p>
+              {props.values.volumeInfo.categories ? <footer className="blockquote-footer">
+                Categories: <cite title="Source Title">{props.values.volumeInfo.categories}</cite>
+              </footer> : <></>}
+
               <footer className="blockquote-footer">
                 Author<cite title="Source Title"> {props.values.volumeInfo.authors.join(", ")}</cite>
               </footer>
             </blockquote>
+            <div class="btn-group" style={{position:"absolute", top:0 ,right:0}} role="group"
+                        aria-label="Basic example">
+                        <button type="button" class="btn btn-secondary">View</button>
+                        <button type="button" class="btn btn-success">Add</button>
+                    </div>
           </div>
           <div className="row">
-            <div className="col-4">
-              <img className="img-fluid pt-1" src={props.values.volumeInfo.imageLinks ? props.values.volumeInfo.imageLinks.thumbnail :"https://picsum.photos/500"  } alt />
+            <div className="col-3">
+              <img className="img-fluid pt-1" style={{ width: 128, height: 197 }} src={props.values.volumeInfo.imageLinks ? props.values.volumeInfo.imageLinks.thumbnail : "https://www.jstor.org/assets/collection-view_20200205T2342/build/images/cover_not_available.png"} alt />
             </div>
-            <div className="col-8">
+            <div className="col-9">
               <p className="pt-0">{props.values.volumeInfo.description}</p>
             </div>
           </div>

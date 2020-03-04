@@ -96,7 +96,7 @@ function Books() {
               </FormBtn>
           </form>
           <br/><br/>
-          {books.length ? (
+          {apiResponse[0] ? (
             <ResultList>
               {apiResponse.map(book => (
                 <ResultListItem key={book.id} values={book}>
