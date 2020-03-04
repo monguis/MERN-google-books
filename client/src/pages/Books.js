@@ -5,7 +5,7 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import {ResultList,ResultListItem} from "../components/ResultList"
+import { ResultList, ResultListItem } from "../components/ResultList"
 import { Input, TextArea, FormBtn } from "../components/Form";
 
 function Books() {
@@ -55,13 +55,22 @@ function Books() {
       loadGoogleBooks();
     }
 
-    // API.saveBook({
-    //   title: formObject.title,
-    //   author: formObject.author,
-    //   synopsis: formObject.synopsis
-    // })
-    //   .then(res => loadBooks())
-    //   .catch(err => console.log(err));
+
+  }
+
+  const googleBookAdd = (e) => {
+    const index = e.target.getAttribute("index")
+    console.log(index)
+    console.log(apiResponse[index]);
+    API.saveBook({
+      title: apiResponse[index].volumeInfo.title,
+      author: apiResponse[index].volumeInfo.authors.join(", "),
+      synopsis: apiResponse[index].volumeInfo.description,
+      image: apiResponse[index].volumeInfo.thumbnail, 
+      link: apiResponse[index].volumeInfo.canonicalVolumeLink
+    })
+      .then(res => loadBooks())
+      .catch(err => console.log(err));
   };
 
   return (
@@ -94,18 +103,11 @@ function Books() {
               Search
               </FormBtn>
           </form>
-          <br/><br/>
+          <br /><br />
           {apiResponse[0] ? (
             <ResultList>
-              {apiResponse.map(book => (
-                <ResultListItem key={book.id} values={book}>
-                  
-                  {/* <Link to={"/books/" + book._id}>
-                    <strong>
-                      {book.title} by {book.author}
-                    </strong>
-                  </Link> */}
-                  {/* <DeleteBtn onClick={() => deleteBook(book._id)} /> */}
+              {apiResponse.map((book,index) => (
+                <ResultListItem key={book.id} index = {index} values={book} googleBookAdd={googleBookAdd}>
                 </ResultListItem>
               ))}
             </ResultList>

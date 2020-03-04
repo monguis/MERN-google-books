@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import {Link} from "react-router-dom"
 
 // This file exports both the List and ListItem components
 
@@ -16,7 +17,7 @@ export function ResultListItem(props) {
     <div className="card">
       <div className="card-body">
         <div className="container p-0">
-          <div className="row" style={{position:"relative"}}>
+          <div className="row" style={{ position: "relative" }}>
             <blockquote className="blockquote mb-0">
               <p>
                 {props.values.volumeInfo.title}
@@ -27,13 +28,15 @@ export function ResultListItem(props) {
 
               {props.values.volumeInfo.authors ? <footer className="blockquote-footer">
                 Author<cite title="Source Title"> {props.values.volumeInfo.authors.join(", ")}</cite>
-              </footer>:<></>}
+              </footer> : <></>}
             </blockquote>
-            <div className="btn-group" style={{position:"absolute", top:0 ,right:0}} role="group"
-                        aria-label="Basic example">
-                        <button type="button" className="btn btn-secondary">View</button>
-                        <button type="button" className="btn btn-success">Add</button>
-                    </div>
+            <div className="btn-group" style={{ position: "absolute", top: 0, right: 0 }} role="group"
+              aria-label="Basic example">
+              <Link to={"/books/google+"+props.values.id}>
+                <button type="button" className="btn btn-secondary">View</button>
+              </Link>
+              <button type="button" index = {props.index} className="btn btn-success" onClick={(e)=>{props.googleBookAdd(e)}}>Add</button>
+            </div>
           </div>
           <div className="row">
             <div className="col-3">
@@ -41,10 +44,14 @@ export function ResultListItem(props) {
             </div>
             <div className="col-9">
               <p className="pt-0">{props.values.volumeInfo.description}</p>
+              <a href={props.values.volumeInfo.canonicalVolumeLink}>{props.values.volumeInfo.canonicalVolumeLink}</a>
             </div>
           </div>
         </div>
       </div>
     </div></li>)
+    
+    
+
 
 }

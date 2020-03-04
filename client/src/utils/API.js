@@ -19,5 +19,9 @@ export default {
   },
   googlebooksget: function(queryO){
     return axios.get(`https://www.googleapis.com/books/v1/volumes?q=intitle:${queryO.title.trim().split(" ").join("+")}${queryO.author ? "+inauthor:"+queryO.author.trim().split(" ").join("+"):""}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`);
+  },
+
+  googlebooksgetid: function(id){
+    return axios.get(`https://www.googleapis.com/books/v1/volumes/${id}?key=${process.env.REACT_APP_GOOGLE_API_KEY}`);
   }
 };
