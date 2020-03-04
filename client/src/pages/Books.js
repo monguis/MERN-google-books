@@ -53,7 +53,6 @@ function Books() {
     event.preventDefault();
     if (formObject.title) {
       loadGoogleBooks();
-      console.log(apiResponse)
     }
 
     // API.saveBook({
@@ -142,61 +141,3 @@ function Books() {
 
 
 export default Books;
-// {
-//   "kind": "books#volume",
-//   "id": "UULaCAAAQBAJ",
-//   "etag": "GONiNZl6WwU",
-//   "selfLink": "https://www.googleapis.com/books/v1/volumes/UULaCAAAQBAJ",
-//   "volumeInfo": {
-//     "title": "The Two Towers (LOTR #2)",
-//     "subtitle": "Being The Second Part Of The Lord Of The Rings",
-//     "authors": [
-//       "John Ronald Reuel Tolkien"
-//     ],
-//     "publisher": "DISCOZUU",
-//     "publishedDate": "1982",
-//     "readingModes": {
-//       "text": true,
-//       "image": false
-//     },
-//     "pageCount": 447,
-//     "printType": "BOOK",
-//     "categories": [
-//       "Fairy tales"
-//     ],
-//     "averageRating": 4,
-//     "ratingsCount": 1297,
-//     "maturityRating": "NOT_MATURE",
-//     "allowAnonLogging": false,
-//     "contentVersion": "1.1.1.0.preview.2",
-//     "imageLinks": {
-//       "smallThumbnail": "http://books.google.com/books/content?id=UULaCAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
-//       "thumbnail": "http://books.google.com/books/content?id=UULaCAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-//     },
-//     "language": "en",
-//     "previewLink": "http://books.google.com/books?id=UULaCAAAQBAJ&dq=intitle:lotr&hl=&cd=1&source=gbs_api",
-//     "infoLink": "http://books.google.com/books?id=UULaCAAAQBAJ&dq=intitle:lotr&hl=&source=gbs_api",
-//     "canonicalVolumeLink": "https://books.google.com/books/about/The_Two_Towers_LOTR_2.html?hl=&id=UULaCAAAQBAJ"
-//   },
-//   "saleInfo": {
-//     "country": "US",
-//     "saleability": "NOT_FOR_SALE",
-//     "isEbook": false
-//   },
-//   "accessInfo": {
-//     "country": "US",
-//     "viewability": "NO_PAGES",
-//     "embeddable": false,
-//     "publicDomain": false,
-//     "textToSpeechPermission": "ALLOWED",
-//     "epub": {
-//       "isAvailable": true
-//     },
-//     "pdf": {
-//       "isAvailable": true
-//     },
-//     "webReaderLink": "http://play.google.com/books/reader?id=UULaCAAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
-//     "accessViewStatus": "NONE",
-//     "quoteSharingAllowed": false
-//   }
-// }
